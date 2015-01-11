@@ -176,11 +176,14 @@
 (add-hook 'emacs-lisp-mode-hook 'form-feed-mode)
 (add-hook 'compilation-mode-hook 'form-feed-mode)
 
+;; Allow tabs in text-mode
+(add-hook 'text-mode-hook '(lambda () (setq indent-tabs-mode t)))
+
 ;; Enable ansible support
 (prelude-require-packages '(ansible ansible-doc))
-(add-hook 'yaml-mode-hook 'ansible-doc-mode)
 (require 'ansible)
-;;(add-hook 'yaml-mode-hook '(lambda () (ansible 1)))
+(add-hook 'yaml-mode-hook '(lambda () (ansible 1)))
+(add-hook 'yaml-mode-hook 'ansible-doc-mode)
 ;;(add-hook 'yaml-mode-hook 'ansible-mode)
 
 ;; Jinja2 support
