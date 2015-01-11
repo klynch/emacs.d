@@ -122,15 +122,6 @@
 ;; Disable the kill-line binding
 (global-set-key (kbd "C-<backspace>") 'backward-kill-word)
 
-;;(require 'yasnippet)
-;;(yas-global-mode 1)
-
-;; Remove all toolbars if they are bound
-;;(if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
-;;(if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
-;;(unless window-system
-;;  (if (fboundp 'menu-bar-mode) (menu-bar-mode -1)))
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Load Packages
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -148,16 +139,37 @@
 
 (prelude-require-package 'auto-complete)
 (require 'auto-complete-config)
+(setq ac-comphist-file (expand-file-name "ac-comphist.dat" prelude-savefile-dir))
+(setq ac-dwim t)
+(ac-config-default)
+
+(ac-set-trigger-key "TAB")
+(setq ac-auto-start nil)
+
+;; set also the completion for eshell
+(add-hook 'eshell-mode-hook 'ac-eshell-mode-setup)
+
+;; custom keybindings to use tab, enter and up and down arrows
+(define-key ac-complete-mode-map "\t" 'ac-expand)
+(define-key ac-complete-mode-map "\r" 'ac-complete)
+(define-key ac-complete-mode-map "\M-n" 'ac-next)
+(define-key ac-complete-mode-map "\M-p" 'ac-previous)
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; YASnippet
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(prelude-require-packages '(yasnippet))
+(require 'yasnippet)
+(yas-initialize)
+
+(add-to-list 'auto-mode-alist '("\\.yasnippet$" . snippet-mode))
+(add-to-list 'auto-mode-alist '(".yas-setup$"   . emacs-lisp-mode))
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Additional modes
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-;; Allow tabs in text-mode
-(add-hook 'text-mode-hook '(lambda () (setq indent-tabs-mode t)))
-
-;; Better package listing
-(prelude-require-packages '(paradox async))
 
 ;; Use lines instead of ^L
 (prelude-require-package 'form-feed)
