@@ -113,12 +113,10 @@
 (setq ffap-machine-p-known 'reject)
 
 ;; Disable annoying smartparen keybindings
-(setq sp-override-key-bindings '(
-                                 ("C-<left>" . nil)
+(setq sp-override-key-bindings '(("C-<left>" . nil)
                                  ("C-<right>" . nil)
                                  ("C-M-<left>" . nil)
-                                 ("C-M-<right>" . nil)
-                                 ))
+                                 ("C-M-<right>" . nil)))
 (sp--update-override-key-bindings)
 
 ;; Disable the kill-line binding
@@ -137,11 +135,9 @@
 ;;; Load Packages
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(prelude-require-packages '(
-                            uuidgen
+(prelude-require-packages '(uuidgen
                             dockerfile-mode
-                            neotree
-                            ))
+                            neotree))
 
 (require 'neotree)
 (require 'conf-bindings)
