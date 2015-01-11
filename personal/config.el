@@ -1,3 +1,7 @@
+;; These can be used to install packages as well
+(prelude-require-packages '(use-package
+                            diminish))
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Display
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -175,9 +179,18 @@
 (prelude-require-package 'form-feed)
 (add-hook 'emacs-lisp-mode-hook 'form-feed-mode)
 (add-hook 'compilation-mode-hook 'form-feed-mode)
+;; (use-package form-feed
+;;              :config
+;;              (progn
+;;                (add-hook 'emacs-lisp-mode-hook 'form-feed-mode)
+;;                (add-hook 'compilation-mode-hook 'form-feed-mode)))
+
 
 ;; Allow tabs in text-mode
 (add-hook 'text-mode-hook '(lambda () (setq indent-tabs-mode t)))
+
+;; Better package listing
+;;(prelude-require-packages '(paradox async))
 
 ;; Enable ansible support
 (prelude-require-packages '(ansible ansible-doc))
