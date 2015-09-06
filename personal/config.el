@@ -225,6 +225,9 @@
 (add-to-list 'auto-mode-alist '("\\.spu.c$"    . c-mode))
 (add-to-list 'auto-mode-alist '("\\.spuc$"     . c-mode))
 
+(add-to-list 'auto-mode-alist '("/group_vars/"     . yaml-mode))
+(add-to-list 'auto-mode-alist '("/host_vars/"      . yaml-mode))
+
 ;; Allow editing of binary .plist files.
 (add-to-list 'jka-compr-compression-info-list
              ["\\.plist$"
