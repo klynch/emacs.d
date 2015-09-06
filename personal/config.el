@@ -1,6 +1,8 @@
 ;; These can be used to install packages as well
 (prelude-require-packages '(use-package
                             diminish))
+(require 'use-package)
+(require 'diminish)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Display
@@ -169,6 +171,15 @@
 
 (add-to-list 'auto-mode-alist '("\\.yasnippet$" . snippet-mode))
 (add-to-list 'auto-mode-alist '(".yas-setup$"   . emacs-lisp-mode))
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; Load Packages
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(use-package ess
+  :disabled f
+  :ensure t
+  :commands R)
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
