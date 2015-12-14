@@ -49,7 +49,7 @@
 (define-key k-minor-mode-map (kbd "C-x C-S-e")  'prelude-eval-and-replace)
 
 (define-key k-minor-mode-map (kbd "C-x f")  'make-frame)
-(define-key k-minor-mode-map (kbd "C-x g")  'delete-frame)
+(define-key k-minor-mode-map (kbd "C-x M-f")  'delete-frame)
 
 (define-key k-minor-mode-map (kbd "C-x j")  'jump-to-register)
 
