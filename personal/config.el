@@ -198,7 +198,7 @@
 
 
 ;; Allow tabs in text-mode
-(add-hook 'text-mode-hook '(lambda () (setq indent-tabs-mode t)))
+;; (add-hook 'text-mode-hook '(lambda () (setq indent-tabs-mode t)))
 
 ;; Better package listing
 ;;(prelude-require-packages '(paradox async))
@@ -241,3 +241,10 @@
 
 
 (jka-compr-update)
+
+(setq exec-path (append exec-path '("/Users/klynch/.virtualenvs/ansible/bin")))
+
+(setq ansible::vault-password-file "~/.ansible-vault-pw")
+;; (global-set-key (kbd "C-c b") 'ansible::decrypt-buffer)
+;; (global-set-key (kbd "C-c g") 'ansible::encrypt-buffer)
+(add-hook 'ansible-hook 'ansible::auto-decrypt-encrypt)
